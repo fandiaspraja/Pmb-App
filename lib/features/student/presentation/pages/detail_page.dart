@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
-import 'package:pmb_app/common/constants/app_colors.dart';
+import 'package:pmb_app/core/theme/app_colors.dart';
 import 'package:pmb_app/core/utils/constants.dart';
 import 'package:pmb_app/features/student/domain/entity/student_entity.dart';
 import 'package:pmb_app/features/student/presentation/bloc/student_bloc.dart';
@@ -34,14 +33,9 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text(
-          "Students Detail Page",
-          style: GoogleFonts.urbanist(color: AppColors.textPrimary),
-        ),
+        title: Text("Students Detail Page", style: GoogleFonts.urbanist()),
         leading: BackButton(
-          color: black,
           onPressed: () {
             context.pop();
           },
@@ -129,7 +123,7 @@ class _DetailPageState extends State<DetailPage> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.grey.shade100,
+        // color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -158,7 +152,10 @@ class _DetailPageState extends State<DetailPage> {
             width: 110,
             child: Text(
               title,
-              style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
+              style: TextStyle(
+                // color: Colors.grey.shade600,
+                fontSize: 13,
+              ),
             ),
           ),
           Expanded(

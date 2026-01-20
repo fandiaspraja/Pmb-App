@@ -77,14 +77,25 @@ const Color baseColor = Color(0xFFF4F4F4);
 const Color neutral80 = Color(0xFFE8EDF2);
 
 // text style
-final TextStyle kHeading5 =
-    GoogleFonts.urbanist(fontSize: 23, fontWeight: FontWeight.w900);
+final TextStyle kHeading5 = GoogleFonts.urbanist(
+  fontSize: 23,
+  fontWeight: FontWeight.w900,
+);
 final TextStyle kHeading6 = GoogleFonts.urbanist(
-    fontSize: 19, fontWeight: FontWeight.w500, letterSpacing: 0.15);
+  fontSize: 19,
+  fontWeight: FontWeight.w500,
+  letterSpacing: 0.15,
+);
 final TextStyle kSubtitle = GoogleFonts.urbanist(
-    fontSize: 15, fontWeight: FontWeight.w400, letterSpacing: 0.15);
+  fontSize: 15,
+  fontWeight: FontWeight.w400,
+  letterSpacing: 0.15,
+);
 final TextStyle kBodyText = GoogleFonts.urbanist(
-    fontSize: 13, fontWeight: FontWeight.w400, letterSpacing: 0.25);
+  fontSize: 13,
+  fontWeight: FontWeight.w400,
+  letterSpacing: 0.25,
+);
 
 // text theme
 final kTextTheme = TextTheme(
@@ -94,9 +105,7 @@ final kTextTheme = TextTheme(
   bodyMedium: kBodyText,
 );
 
-final kDrawerTheme = DrawerThemeData(
-  backgroundColor: Colors.grey.shade700,
-);
+final kDrawerTheme = DrawerThemeData(backgroundColor: Colors.grey.shade700);
 
 const kColorScheme = ColorScheme(
   primary: primary,

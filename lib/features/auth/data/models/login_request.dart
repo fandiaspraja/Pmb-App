@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 class LoginRequest {
   final String? email;
   final String? password;

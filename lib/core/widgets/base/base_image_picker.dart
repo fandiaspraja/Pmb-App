@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:pmb_app/common/constants/app_colors.dart';
+import 'package:pmb_app/common/constants/app_colorss.dart';
+import 'package:pmb_app/core/theme/app_colors.dart';
 import 'package:pmb_app/core/utils/upload_picture.dart';
 
 class BaseImagePicker extends StatefulWidget {
@@ -110,10 +111,7 @@ class _BaseImagePickerState extends State<BaseImagePicker> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          const Icon(
-                            Icons.photo,
-                            color: AppColors.textTertiary,
-                          ),
+                          Icon(Icons.photo, color: AppColors.textTertiary),
                           2.verticalSpace,
                           Text(
                             "upload Photo",

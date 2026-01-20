@@ -9,7 +9,6 @@ import 'package:pmb_app/core/widgets/base/base_input.dart';
 import 'package:pmb_app/core/widgets/custom_button_primary.dart';
 import 'package:pmb_app/core/widgets/custom_outlined_datetime.dart';
 import 'package:pmb_app/features/student/data/models/register_request.dart';
-import 'package:pmb_app/features/student/domain/entity/major_entity.dart';
 import 'package:pmb_app/features/student/presentation/bloc/student_bloc.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -46,9 +45,9 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
+        backgroundColor: Colors.transparent,
       ),
       body: BlocListener<StudentBloc, StudentStateBloc>(
         listener: (context, state) {
@@ -89,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Text(
                   "Add New Student",
                   style: GoogleFonts.urbanist(
-                    color: fontColorPrimary,
+                    // color: fontColorPrimary,
                     fontSize: 36,
                     fontWeight: FontWeight.w600,
                   ),

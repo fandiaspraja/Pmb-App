@@ -1,10 +1,11 @@
 import 'dart:ui';
 
 class AppColors {
-  static const primary100 = Color(0xFF12a4cc);
-  static const primary90 = Color(0xFF1db3e0);
+  // PRIMARY
+  static const primary100 = Color(0xFF12A4CC);
+  static const primary90 = Color(0xFF1DB3E0);
   static const primary80 = Color(0xFF2CBEE7);
-  static const primary70 = Color(0xFF51c9ed);
+  static const primary70 = Color(0xFF51C9ED);
   static const primary60 = Color(0xFF83C5F2);
   static const primary50 = Color(0xFF9BD7F8);
   static const primary40 = Color(0xFFCAF0FE);
@@ -12,6 +13,7 @@ class AppColors {
   static const primary20 = Color(0xFFDFF6FE);
   static const primary10 = Color(0xFFEEF9FF);
 
+  // SECONDARY
   static const secondary100 = Color(0xFF2BB63F);
   static const secondary90 = Color(0xFF4DC157);
   static const secondary80 = Color(0xFF6FCC6F);
@@ -23,6 +25,7 @@ class AppColors {
   static const secondary20 = Color(0xFFF7FAE8);
   static const secondary10 = Color(0xFFFBFDF3);
 
+  // NEUTRAL
   static const neutral100 = Color(0xFFFFFFFF);
   static const neutral90 = Color(0xFFF4F6F8);
   static const neutral80 = Color(0xFFE8EDF2);
@@ -34,15 +37,21 @@ class AppColors {
   static const neutral20 = Color(0xFF4D5F76);
   static const neutral10 = Color(0xFF061738);
 
+  // TEXT
   static const textPrimary = Color(0xFF061738);
   static const textSecondary = Color(0xFF8F9EB2);
   static const textTertiary = Color(0xFFB7C7DF);
   static const textPlaceholder = Color(0xFF9AA4B2);
 
+  // STATUS
+  static const success = Color(0xFF2BB63F);
+  static const warning = Color(0xFFF4CD32);
+  static const error = Color(0xFFEB5757);
+
+  // BACKGROUND
   static const bgBody = Color(0xFFFFFFFF);
-  static const bgDisableCard = Color(0xFFD7E2F0);
   static const bgCard = Color(0xFFF8FBFF);
-  static const bgDisableButton = Color(0xFFB7C7DF);
+  static const bgDisable = Color(0xFFD7E2F0);
 
   static const borderBase = Color(0xFFF4F4F4);
   static const borderLight = Color(0xFFF0F1F6);
@@ -54,14 +63,7 @@ class AppColors {
   static const saDisable = Color(0xFFB7C7DF);
   static const bgExpress = Color(0xFFFFF3F3);
   static const bgNormal = Color(0xFFDFF6FE);
-}
 
-Color parseColor(String hexColor) {
-  hexColor = hexColor.toUpperCase().replaceAll("#", "");
-  if (hexColor.length == 6) {
-    hexColor = "FF$hexColor"; // Add alpha if not provided
-  } else {
-    return AppColors.saLight;
-  }
-  return Color(int.parse(hexColor, radix: 16));
+  static const bgDisableCard = Color(0xFFD7E2F0);
+  static const bgDisableButton = Color(0xFFB7C7DF);
 }

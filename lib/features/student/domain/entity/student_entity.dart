@@ -1,5 +1,4 @@
 import 'package:pmb_app/features/student/data/models/student_response.dart';
-import 'package:pmb_app/features/auth/data/models/user_response.dart';
 
 class StudentEntity {
   final int? id;

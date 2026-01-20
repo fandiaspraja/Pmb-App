@@ -6,6 +6,7 @@ import 'package:pmb_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:pmb_app/features/student/presentation/pages/detail_page.dart';
 import 'package:pmb_app/features/student/presentation/pages/home_page.dart';
 import 'package:pmb_app/features/student/presentation/pages/register_page.dart';
+import 'package:pmb_app/features/theme/presentation/pages/theme_page.dart';
 
 Page<dynamic> buildPageWithTransition(Widget child, GoRouterState state) {
   return CustomTransitionPage(
@@ -62,6 +63,12 @@ final GoRouter router = GoRouter(
       path: '/register',
       pageBuilder: (context, state) {
         return buildPageWithTransition(RegisterPage(), state);
+      },
+    ),
+    GoRoute(
+      path: '/theme',
+      pageBuilder: (context, state) {
+        return buildPageWithTransition(ThemePage(), state);
       },
     ),
   ],

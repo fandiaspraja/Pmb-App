@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pmb_app/common/constants/app_colors.dart';
+import 'package:pmb_app/core/theme/app_colors.dart';
 
 class DropdownOption {
   DropdownOption({required this.value, required this.label});

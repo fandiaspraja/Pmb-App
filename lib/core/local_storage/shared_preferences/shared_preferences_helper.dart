@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesHelper {
@@ -7,8 +8,27 @@ class SharedPreferencesHelper {
   static const String userToken = "user_token";
   static const String firstInstall = "first_install";
   static const String prefUser = "user_data";
+  static const _themeKey = 'theme_mode';
 
   SharedPreferencesHelper({required this.pref});
+
+  Future<void> saveThemeMode(ThemeMode mode) async {
+    await pref.setString(_themeKey, mode.name);
+  }
+
+  ThemeMode getThemeMode() {
+    final value = pref.getString(_themeKey);
+
+    switch (value) {
+      case 'dark':
+        return ThemeMode.dark;
+      case 'light':
+        return ThemeMode.light;
+      case 'system':
+      default:
+        return ThemeMode.system;
+    }
+  }
 
   Future<bool> clear() async {
     try {

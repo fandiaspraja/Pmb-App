@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
-import 'package:pmb_app/common/constants/app_colors.dart';
+import 'package:pmb_app/core/theme/app_colors.dart';
 import 'package:pmb_app/core/utils/constants.dart';
 import 'package:pmb_app/features/auth/presentation/pages/login_page.dart';
 import 'package:pmb_app/features/student/domain/entity/student_entity.dart';
 import 'package:pmb_app/features/student/presentation/bloc/student_bloc.dart';
 import 'package:pmb_app/features/student/presentation/pages/detail_page.dart';
 import 'package:pmb_app/features/student/presentation/pages/register_page.dart';
+import 'package:pmb_app/features/student/presentation/widgets/home_drawer_content.dart';
 import 'package:pmb_app/features/student/presentation/widgets/student_card.dart';
+import 'package:pmb_app/features/theme/presentation/pages/theme_page.dart';
 
 class HomePage extends StatefulWidget {
   static const ROUTE_NAME = '/home';
@@ -37,27 +38,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text(
-          "Students Page",
-          style: GoogleFonts.urbanist(color: AppColors.textPrimary),
-        ),
-        leading: BackButton(
-          color: black,
-          onPressed: () {
-            context.pop();
-          },
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              showLogoutDialog(context);
-            },
-            icon: const Icon(Icons.logout, color: black),
-          ),
-        ],
+        title: Text("Students Page", style: GoogleFonts.urbanist()),
       ),
+      drawerScrimColor: Colors.transparent,
+      drawer: Drawer(
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        child: const HomeDrawerContent(),
+      ),
+
       body: BlocBuilder<StudentBloc, StudentStateBloc>(
         builder: (context, state) {
           if (state is StudentListSuccess) {
@@ -90,8 +79,6 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue.shade100,
-        foregroundColor: primary,
         tooltip: "Add Student",
         onPressed: () {
           context.push(RegisterPage.ROUTE_NAME);
@@ -100,37 +87,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
-
-void showLogoutDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (context) {
-      return AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text("Logout"),
-        content: const Text("Are you sure want to logout ?"),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("Cancel", style: TextStyle(color: Colors.grey)),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-            onPressed: () {
-              Navigator.pop(context);
-
-              context.read<StudentBloc>().add(LogoutEvent());
-
-              context.go(LoginPage.ROUTE_NAME);
-            },
-            child: const Text("Logout", style: TextStyle(color: Colors.white)),
-          ),
-        ],
-      );
-    },
-  );
 }

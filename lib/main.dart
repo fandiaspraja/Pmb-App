@@ -1,11 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pmb_app/config/app_config.dart';
 import 'package:pmb_app/core/utils/constants.dart';
+import 'package:pmb_app/core/utils/constants.dart' as AppColors;
 import 'package:pmb_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:pmb_app/features/splash/presentation/bloc/splash_bloc.dart';
 import 'package:pmb_app/features/student/presentation/bloc/student_bloc.dart';
+import 'package:pmb_app/features/theme/presentation/bloc/theme_bloc.dart';
+import 'package:pmb_app/firebase_options.dart';
 import 'package:pmb_app/injection.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +17,8 @@ import 'routes/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await di.init();
   AppConfig.create(
@@ -37,28 +43,55 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => di.locator<SplashBloc>()),
         BlocProvider(create: (_) => di.locator<AuthBloc>()),
         BlocProvider(create: (_) => di.locator<StudentBloc>()),
+        BlocProvider(create: (_) => di.locator<ThemeBloc>()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {
-          return MaterialApp.router(
-            routerConfig: router,
-            debugShowCheckedModeBanner: false,
-            title: 'PMB App',
-            theme: ThemeData.light().copyWith(
-              // colorScheme: kColorScheme,
-              primaryColor: primary,
-              scaffoldBackgroundColor: bgPrimary,
-              // textTheme: kTextTheme,
-              drawerTheme: kDrawerTheme,
-            ),
-            themeMode: ThemeMode.light,
-            darkTheme: ThemeData.light(),
+          return BlocBuilder<ThemeBloc, ThemeStateBloc>(
+            builder: (context, state) {
+              ThemeMode themeMode = ThemeMode.light;
 
-            // TODO: CHANGE TO DEFAULT
-            builder: EasyLoading.init(),
+              if (state is ThemeLoaded) {
+                themeMode = state.themeMode;
+              }
+
+              return MaterialApp.router(
+                routerConfig: router,
+                debugShowCheckedModeBanner: false,
+
+                // title: 'PMB App',
+                themeMode: themeMode,
+                theme: ThemeData.light().copyWith(
+                  primaryColor: primary,
+                  scaffoldBackgroundColor: bgPrimary,
+                  drawerTheme: kDrawerTheme,
+                  cardTheme: CardThemeData(
+                    color: AppColors.bgCard,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                ),
+
+                darkTheme: ThemeData.dark().copyWith(
+                  scaffoldBackgroundColor: Colors.black,
+                  cardTheme: CardThemeData(
+                    color: Colors.grey[900],
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                ),
+
+                // TODO: CHANGE TO DEFAULT
+                builder: EasyLoading.init(),
+              );
+            },
           );
         },
       ),

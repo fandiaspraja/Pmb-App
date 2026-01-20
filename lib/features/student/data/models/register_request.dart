@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 class RegisterRequest {
   final String? name;
   final String? nisn;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pmb_app/common/constants/app_colors.dart';
+import 'package:pmb_app/core/theme/app_colors.dart';
 
 class BaseInput extends StatelessWidget {
   const BaseInput({
@@ -39,7 +39,7 @@ class BaseInput extends StatelessWidget {
           Text(
             label,
             style: GoogleFonts.urbanist(
-              color: AppColors.textSecondary,
+              // color: AppColors.textSecondary,
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
@@ -54,11 +54,11 @@ class BaseInput extends StatelessWidget {
           keyboardType: keyboardType,
           inputFormatters: inputFormatters,
           obscureText: obscureText ?? false,
-          style: GoogleFonts.urbanist(color: AppColors.textPrimary),
+          style: GoogleFonts.urbanist(),
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: GoogleFonts.urbanist(
-              color: AppColors.textPlaceholder,
+              // color: AppColors.textPlaceholder,
               fontSize: 14,
             ),
             border: OutlineInputBorder(

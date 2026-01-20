@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
 import 'package:pmb_app/core/utils/constants.dart';
-import 'package:pmb_app/core/utils/constants.dart' as AppColors;
 import 'package:pmb_app/core/utils/custom_toast.dart';
 import 'package:pmb_app/core/widgets/base/base_input.dart';
 import 'package:pmb_app/core/widgets/custom_button_primary.dart';
-import 'package:pmb_app/features/auth/data/models/login_request.dart';
 import 'package:pmb_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:pmb_app/features/student/presentation/pages/home_page.dart';
 
@@ -29,9 +26,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
+        backgroundColor: Colors.transparent,
       ),
       body: BlocListener<AuthBloc, AuthStateBloc>(
         listener: (context, state) {
@@ -62,7 +59,6 @@ class _LoginPageState extends State<LoginPage> {
                 Text(
                   "Login",
                   style: GoogleFonts.urbanist(
-                    color: fontColorPrimary,
                     fontSize: 36,
                     fontWeight: FontWeight.w600,
                   ),

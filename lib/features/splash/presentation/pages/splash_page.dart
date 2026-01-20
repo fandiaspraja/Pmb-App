@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pmb_app/common/constants/app_colors.dart';
-import 'package:pmb_app/core/utils/constants.dart';
+import 'package:pmb_app/core/utils/constants.dart' as AppColors;
 import 'package:pmb_app/features/auth/presentation/pages/login_page.dart';
+import 'package:pmb_app/features/push_notification/domain/usecase/push_notification_usecase.dart';
 import 'package:pmb_app/features/splash/presentation/bloc/splash_bloc.dart';
 import 'package:pmb_app/features/student/presentation/pages/home_page.dart';
+import 'package:pmb_app/features/theme/presentation/bloc/theme_bloc.dart';
+import 'package:pmb_app/injection.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -15,16 +17,36 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  final _pushNotificationUseCase = locator<PushNotificationUseCase>();
+  String? fcmToken;
+
   @override
   void initState() {
-    // TODO: implement initState
+    context.read<ThemeBloc>().add(LoadThemeEvent());
     super.initState();
 
-    // _setupPushNotifications();
+    _setupPushNotifications();
 
     Future.delayed(Duration(seconds: 3), () {
       context.read<SplashBloc>().add(GetLoginStatusSplashEvent());
     });
+  }
+
+  Future<void> _setupPushNotifications() async {
+    try {
+      // Get device token (optional)
+      final token = await _pushNotificationUseCase.getDeviceToken();
+      debugPrint("FCM Device Token: $token");
+      fcmToken = token;
+
+      // Set listener on foreground/background notifications
+      _pushNotificationUseCase.configurePushNotifications();
+
+      // (Optional) Subscribe to topic
+      // _pushNotificationUseCase.subscribeToTopic("user");
+    } catch (e) {
+      debugPrint("Push Notification Error: $e");
+    }
   }
 
   @override

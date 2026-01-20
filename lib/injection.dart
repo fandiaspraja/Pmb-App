@@ -12,6 +12,9 @@ import 'package:pmb_app/features/auth/data/repositories/auth_repository_impl.dar
 import 'package:pmb_app/features/auth/domain/repository/auth_repository.dart';
 import 'package:pmb_app/features/auth/domain/usecase/auth_usecase.dart';
 import 'package:pmb_app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:pmb_app/features/push_notification/domain/repository/push_notification_repository.dart';
+import 'package:pmb_app/features/push_notification/domain/usecase/push_notification_usecase.dart';
+import 'package:pmb_app/features/push_notification/service/push_notification_service.dart';
 import 'package:pmb_app/features/splash/presentation/bloc/splash_bloc.dart';
 import 'package:pmb_app/features/student/data/datasources/remote/student_remote_data_source.dart';
 import 'package:pmb_app/features/student/data/datasources/student_remote_data_source_impl.dart';
@@ -19,6 +22,7 @@ import 'package:pmb_app/features/student/data/repositories/student_repository_im
 import 'package:pmb_app/features/student/domain/repository/student_repository.dart';
 import 'package:pmb_app/features/student/domain/usecase/student_usecase.dart';
 import 'package:pmb_app/features/student/presentation/bloc/student_bloc.dart';
+import 'package:pmb_app/features/theme/presentation/bloc/theme_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final locator = GetIt.instance;
@@ -56,11 +60,13 @@ Future<void> init() async {
   locator.registerFactory(() => StudentBloc(locator(), locator()));
 
   locator.registerFactory(() => SplashBloc(locator()));
+  locator.registerFactory(() => ThemeBloc(locator()));
 
   // usecase
 
   locator.registerFactory(() => AuthUsecase(repository: locator()));
   locator.registerFactory(() => StudentUsecase(repository: locator()));
+  locator.registerFactory(() => PushNotificationUseCase(repository: locator()));
 
   // repository
   locator.registerLazySingleton<AuthRepository>(
@@ -68,6 +74,10 @@ Future<void> init() async {
   );
   locator.registerLazySingleton<StudentRepository>(
     () => StudentRepositoryImpl(remoteDataSource: locator()),
+  );
+
+  locator.registerLazySingleton<PushNotificationRepository>(
+    () => PushNotificationService(),
   );
 
   // remote data source

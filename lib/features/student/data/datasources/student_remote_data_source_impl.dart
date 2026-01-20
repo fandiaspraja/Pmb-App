@@ -2,16 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:pmb_app/core/network/api_client.dart';
 import 'package:pmb_app/core/utils/exception.dart';
 import 'package:pmb_app/core/utils/response_wrapper.dart';
-import 'package:pmb_app/features/auth/data/datasources/remote/auth_remote_data_source.dart';
-import 'package:pmb_app/features/auth/data/models/login_request.dart';
 import 'package:pmb_app/features/student/data/datasources/remote/student_remote_data_source.dart';
 import 'package:pmb_app/features/student/data/models/major_response.dart';
 import 'package:pmb_app/features/student/data/models/register_request.dart';
 import 'package:pmb_app/features/student/data/models/student_response.dart';
-import 'package:pmb_app/features/auth/data/models/user_response.dart';
 import 'package:pmb_app/features/student/domain/entity/major_entity.dart';
 import 'package:pmb_app/features/student/domain/entity/student_entity.dart';
-import 'package:pmb_app/features/auth/domain/entity/user_entity.dart';
 
 class StudentRemoteDataSourceImpl implements StudentRemoteDataSource {
   final ApiClient apiClient;

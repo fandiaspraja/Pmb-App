@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pmb_app/common/constants/app_colors.dart';
+import 'package:pmb_app/common/constants/app_colorss.dart';
+import 'package:pmb_app/core/theme/app_colors.dart';
 
 import '../../../../core/utils/constants.dart';
 import 'custom_input_field.dart';
