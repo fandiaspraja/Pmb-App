@@ -7,28 +7,19 @@ A mobile application built as part of the Technical Test – Staff Mobile Develo
 Student Registration App is a mobile application that allows administrators to register students digitally, manage student data locally, and view detailed student information through a clean and user-friendly interface.
 
 The project focuses on:
-
 Clean code & maintainable architecture
-
 Proper state management
-
-Local data persistence
-
+Integration Mock API
 Input validation & error handling
-
 Production-ready project structure
 
 ✨ Features
 🔐 Authentication
-
 Dummy login (mock API Apiary)
-
 Input validation
-
 Clear error messages
 
 📝 Student Registration
-
 Full name
 NISN
 Date of birth
