@@ -1,6 +1,6 @@
 # 🚀 Student Registration App
 
-A mobile application built as part of the **Technical Test – Staff Mobile Developer**, designed to demonstrate **Clean Architecture**, **scalable state management**, and **proper local data handling** in a real-world Flutter development scenario.
+A mobile application built as part of the **Technical Test – Staff Mobile Developer**, designed to demonstrate **Clean Architecture**, **scalable state management**, and **proper API data handling** in a real-world Flutter development scenario.
 
 ---
 
