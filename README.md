@@ -1,17 +1,203 @@
-# pmb_app
+🚀 Student Registration App
 
-A new Flutter project.
+A mobile application built as part of the Technical Test – Staff Mobile Developer, designed to demonstrate clean architecture, scalable state management, and proper local data handling in a real-world mobile development scenario.
 
-## Getting Started
+📱 Overview
 
-This project is a starting point for a Flutter application.
+Student Registration App is a mobile application that allows administrators to register students digitally, manage student data locally, and view detailed student information through a clean and user-friendly interface.
 
-A few resources to get you started if this is your first Flutter project:
+The project focuses on:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Clean code & maintainable architecture
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# Pmb-App
+Proper state management
+
+Local data persistence
+
+Input validation & error handling
+
+Production-ready project structure
+
+✨ Features
+🔐 Authentication
+
+Dummy login (hardcoded / mock API)
+
+Input validation
+
+Clear error messages
+
+📝 Student Registration
+
+Full name
+
+NISN
+
+Date of birth
+
+Major selection (dropdown)
+
+Includes:
+
+Required field validation
+
+User-friendly form interaction
+
+Local data persistence
+
+📋 Student List
+
+Display registered students
+
+Data loaded from local storage
+
+Real-time update after registration
+
+👤 Student Detail
+
+Full student information view
+
+Clean and readable layout
+
+⚠️ Error Handling
+
+Empty field validation
+
+Informative error messages
+
+Proper UI state handling (loading, success, error)
+
+⭐ Additional Features (Bonus)
+
+Mock REST API integration
+
+MySQL integration (localhost)
+
+Dark mode support
+
+Push notification simulation (Firebase)
+
+Basic unit testing
+
+Bonus features depend on implementation in this repository.
+
+🧱 Tech Stack
+Category Technology
+Platform Flutter
+Language Dart
+State Management Riverpod / Bloc / Redux
+Local Storage SharedPreferences / Hive / SQLite
+Networking Dio / HTTP
+Architecture Clean Architecture
+Dependency Injection get_it (optional)
+Testing Unit Test (optional)
+🏗 Architecture
+
+This project follows Clean Architecture principles:
+
+Presentation
+│
+├── UI Screens
+├── State Management
+│
+Domain
+│
+├── Entities
+├── Use Cases
+│
+Data
+│
+├── Models
+├── Local Data Source
+├── Repository Implementation
+
+This approach ensures:
+
+Separation of concerns
+
+Easier testing
+
+High maintainability
+
+Scalability for future development
+
+📁 Project Structure
+lib/
+│
+├── core/
+│ ├── constants/
+│ ├── utils/
+│ └── storage/
+│
+├── data/
+│ ├── datasources/
+│ ├── models/
+│ └── repositories/
+│
+├── domain/
+│ ├── entities/
+│ ├── repositories/
+│ └── usecases/
+│
+├── presentation/
+│ ├── login/
+│ ├── register_student/
+│ ├── student_list/
+│ └── student_detail/
+│
+└── main.dart
+
+▶️ Getting Started
+
+1. Clone Repository
+   git clone https://github.com/username/student-registration-app.git
+
+2. Install Dependencies
+   flutter pub get
+
+3. Run Application
+   flutter run
+
+🔑 Dummy Login Credentials
+Email Password
+admin@test.com
+123456
+📦 Deliverables
+
+✅ Source Code (Public GitHub Repository)
+
+✅ APK File
+
+✅ Demo Video (Screen Recording)
+
+⏱ Development Timeline
+
+Duration: 5 days (including weekend)
+
+Deadline: 20 January 2026
+
+🔗 Submission Link
+
+👉 https://bit.ly/PengumpulanTahap3StafIT
+
+🧠 Key Highlights
+
+Clean Architecture implementation
+
+Scalable state management
+
+Offline-first local data handling
+
+Production-style folder structure
+
+Readable, maintainable, and testable code
+
+🙌 Closing
+
+Thank you for the opportunity to complete this technical test.
+This project reflects my approach to building maintainable mobile applications with clean structure, clear separation of responsibility, and readiness for future scaling.
+
+👨‍💻 Author
+
+Fikry Andias Praja
+Mobile Developer (Flutter • Android)

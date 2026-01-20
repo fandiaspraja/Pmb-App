@@ -5,11 +5,13 @@ import 'package:pmb_app/features/auth/presentation/pages/login_page.dart';
 import 'package:pmb_app/features/student/presentation/bloc/student_bloc.dart';
 
 Future<void> showLogoutDialog(BuildContext context) {
+  final studentBloc = context.read<StudentBloc>();
+
   return showDialog(
     context: context,
     barrierDismissible: false,
-    builder: (_) {
-      final theme = Theme.of(context);
+    builder: (dialogContext) {
+      final theme = Theme.of(dialogContext);
 
       return AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -23,7 +25,7 @@ Future<void> showLogoutDialog(BuildContext context) {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(dialogContext);
             },
             child: const Text("Cancel"),
           ),
@@ -36,13 +38,14 @@ Future<void> showLogoutDialog(BuildContext context) {
               ),
             ),
             onPressed: () {
-              Navigator.pop(context);
+              studentBloc.add(LogoutEvent());
+
+              Navigator.pop(dialogContext);
 
               /// clear student + token
-              context.read<StudentBloc>().add(LogoutEvent());
 
               /// go to login
-              context.go(LoginPage.ROUTE_NAME);
+              // context.go(LoginPage.ROUTE_NAME);
             },
             child: const Text("Logout"),
           ),

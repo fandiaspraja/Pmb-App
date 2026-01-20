@@ -36,54 +36,61 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text("Students Page", style: GoogleFonts.urbanist()),
-      ),
-      drawerScrimColor: Colors.transparent,
-      drawer: Drawer(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        child: const HomeDrawerContent(),
-      ),
+    return BlocListener<StudentBloc, StudentStateBloc>(
+      listener: (context, state) {
+        if (state is LogoutSuccess) {
+          context.go(LoginPage.ROUTE_NAME);
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text("Students Page", style: GoogleFonts.urbanist()),
+        ),
+        drawerScrimColor: Colors.transparent,
+        drawer: Drawer(
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          child: const HomeDrawerContent(),
+        ),
 
-      body: BlocBuilder<StudentBloc, StudentStateBloc>(
-        builder: (context, state) {
-          if (state is StudentListSuccess) {
-            students = state.students;
-          }
+        body: BlocBuilder<StudentBloc, StudentStateBloc>(
+          builder: (context, state) {
+            if (state is StudentListSuccess) {
+              students = state.students;
+            }
 
-          return SafeArea(
-            child: Column(
-              children: [
-                gapH16,
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: students.length,
-                    padding: EdgeInsets.all(16),
-                    itemBuilder: (context, index) {
-                      var item = students[index];
+            return SafeArea(
+              child: Column(
+                children: [
+                  gapH16,
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: students.length,
+                      padding: EdgeInsets.all(16),
+                      itemBuilder: (context, index) {
+                        var item = students[index];
 
-                      return StudentCard(
-                        student: item,
-                        onTap: () {
-                          context.push(DetailPage.ROUTE_NAME, extra: item.id);
-                        },
-                      );
-                    },
+                        return StudentCard(
+                          student: item,
+                          onTap: () {
+                            context.push(DetailPage.ROUTE_NAME, extra: item.id);
+                          },
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: "Add Student",
-        onPressed: () {
-          context.push(RegisterPage.ROUTE_NAME);
-        },
-        child: const Icon(Icons.add),
+                ],
+              ),
+            );
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          tooltip: "Add Student",
+          onPressed: () {
+            context.push(RegisterPage.ROUTE_NAME);
+          },
+          child: const Icon(Icons.add),
+        ),
       ),
     );
   }

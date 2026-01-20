@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                   textInputAction: TextInputAction.done,
                   validator: (value) {
                     if (value == null || value == '') {
-                      return "Email can't empty";
+                      return "Password can't empty";
                     }
 
                     return null;
