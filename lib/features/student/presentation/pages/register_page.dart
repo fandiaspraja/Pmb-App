@@ -162,14 +162,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     if (nameController.text.isEmpty) {
                       CustomToast.showError(context, "Name can't empty");
                       return;
+                    } else if (birtdateController.text.isEmpty) {
+                      CustomToast.showError(context, "Birthday can't empty");
+                      return;
                     } else if (nisnController.text.isEmpty) {
                       CustomToast.showError(context, "NISN can't empty");
                       return;
                     } else if (majorController.text.isEmpty) {
                       CustomToast.showError(context, "Major can't empty");
-                      return;
-                    } else if (birtdateController.text.isEmpty) {
-                      CustomToast.showError(context, "Birthday can't empty");
                       return;
                     } else {
                       RegisterRequest request = RegisterRequest(

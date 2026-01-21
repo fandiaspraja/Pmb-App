@@ -30,10 +30,7 @@ class CustomOutlinedDatetime extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title ?? '',
-          style: kSubtitle.copyWith(fontSize: 10, color: disable),
-        ),
+        Text(title ?? '', style: kSubtitle.copyWith(fontSize: 10)),
         gapH8,
         SizedBox(
           width: double.infinity,
@@ -47,39 +44,28 @@ class CustomOutlinedDatetime extends StatelessWidget {
             readOnly: true,
             obscureText: false,
             autofocus: true,
-            style: kSubtitle.copyWith(
-              color: fontColorPrimary,
-              fontSize: 11,
-            ),
+            style: kSubtitle.copyWith(fontSize: 11),
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16, vertical: 4.0), // Minimal padding
+                horizontal: 16,
+                vertical: 4.0,
+              ), // Minimal padding
               suffixIcon: isDate
                   ? Padding(
                       padding: const EdgeInsets.all(12.0),
-                      child: SvgPicture.asset(
-                        'assets/icons/ic_calendar.svg',
-                      ),
+                      child: SvgPicture.asset('assets/icons/ic_calendar.svg'),
                     )
                   : Padding(
                       padding: const EdgeInsets.all(12.0),
-                      child: SvgPicture.asset(
-                        'assets/icons/ic_clock.svg',
-                      ),
+                      child: SvgPicture.asset('assets/icons/ic_clock.svg'),
                     ),
               // labelText: "$title",
               hintText: hintText,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
-              hintStyle: kSubtitle.copyWith(
-                color: darkGreyThird,
-                fontSize: 11,
-              ),
-              labelStyle: kSubtitle.copyWith(
-                color: fontColorPrimary,
-                fontSize: 11,
-              ),
+              hintStyle: kSubtitle.copyWith(fontSize: 11),
+              labelStyle: kSubtitle.copyWith(fontSize: 11),
               // focusedBorder: OutlineInputBorder(
               //   borderSide: const BorderSide(color: primaryThird),
               //   borderRadius: BorderRadius.circular(17),
